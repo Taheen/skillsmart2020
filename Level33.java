@@ -23,6 +23,12 @@ public class level33 {
 		for (int cycle = 1; cycle < maxConquerDays; cycle++) { // this is the main cycle counting capture days
 			
 		    int [] nextMove1;
+		    nextMove1 = advance(dropRow, dropColumn, N, M);
+		    
+		    for (int a = 0; a < nextMove1.length; a += 2) {  //cycling through nextMove1 array, assigning 1s to fields
+		        playArea[nextMove1[a]][nextMove1[a + 1]] = 1;	
+		        
+		    }
 		    
 		    for (int i = 0; i < N; i++) {
 			    for (int j = 0; j < M; j++) {
@@ -38,15 +44,14 @@ public class level33 {
 			    if (captureComplete) // all fields are == 1
 		    	    break;
 		    }
-		    // first conquest complete, moving to next steps
-		    
-		    nextMove1 = advance(dropRow, dropColumn, N, M);
-		    for (int a = 0; a < nextMove1.length; a += 2) {  //cycling through nextMove1 array, assigning 1s to fields
-		        playArea[nextMove1[a]][nextMove1[a + 1]] = 1;	
-		    }
-		    
 		    if (captureComplete) // all fields are == 1
 		    	break;
+		    
+		    // first conquest complete, moving to next steps
+		    
+		    
+		    
+		    
 		}
 			
 		System.out.println("control sum is " + controlSum);
@@ -83,7 +88,6 @@ public class level33 {
 		int M = 5;
 		int dropRow = 2;
 		int dropColumn = 2;
-		int elementAt;
 		
 	
 		System.out.println(Arrays.toString(advance(1,1,4,4)));
