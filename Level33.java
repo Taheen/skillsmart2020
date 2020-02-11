@@ -3,68 +3,93 @@ import java.util.*;
 
 public class level33 {
 	
-	  public static int ConquestCampaign(int N, int M, int L, int [] battalion) {
-	    int conquerDays = 0;
+	public static int ConquestCampaign(int N, int M, int L, int [] battalion) {
+		boolean captureComplete = false; // trigger of completion
 	    int controlSum = 0;
-		int maxCaptureDays = N + (M - 1); // rows + (columns - 1)
-		int [][] playArea = new int [N][M];
-		int numberOfTroops = L;
-	    
-		for (int i = 0; i < N; i++) {
+	    int conquerDays = 1;
+	    int maxConquerDays = N + M - 1; // maximum capture days
+	    int numberOfDrops = L;
+	    int dropRow = battalion[0]; // initial drop row
+	    int dropColumn = battalion[1]; // initial drop column
+	    int playArea[][] = new int [N][M]; //setting up matrix of given size
+		for (int i = 0; i < N; i++) { //filling playArea with 0
 			for (int j = 0; j < M; j++) {
 				playArea[i][j] = 0;
-				}
-		    }
-		
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < M; j++) {
-				controlSum = controlSum + playArea[i][j];
-			  System.out.print(playArea[i][j]+" ");
-			  }
-			System.out.println();
-		   }
-		System.out.println("control sum is " + controlSum);
-		
-		
-		return conquerDays;  
-	  }
-		
-	  public static int horisontalAdvance(int [] testRow1, int rowDeploy) {
-		int rowLength1 = testRow1.length;
-		int drop1 = rowDeploy;
-		int movementDays = 1;
-		
-		testRow1[drop1] = 1;
-			
-			for (int i = 1; i < rowLength1; i++) {
-				int controlSum1 = 0;
-				if ((drop1 - i) >= 0) {
-					testRow1[drop1 - i] = 1;
-				  }
-				
-				if ((drop1 + i) < rowLength1) {
-					testRow1[drop1 + i] = 1;
-				  }
-				
-				for(int k = 0; k < rowLength1; k++) {
-					controlSum1 = controlSum1 + testRow1[k];
-					  System.out.print(testRow1[k] + " ");
-				    }
-				  System.out.println("controlsum is " + controlSum1);
-				movementDays = movementDays + 1;
-				if (controlSum1 == rowLength1)
-					break;
-			  }
-		   return movementDays;
+			}
 		}
-	  
-	  public static void main(String[] args) {
-
-	  
-	  int [] testAdvance1 = {0,0,0,0,0,0,0,0};
-	  int testRowDeploy = 5;
-	  System.out.println(horisontalAdvance(testAdvance1, testRowDeploy) + " days to conquer the row");
-	  //int [] deploy2 = {3,4};
+		
+		playArea[dropRow][dropColumn] = 1; // initial drop set to 1
+		
+		for (int cycle = 1; cycle < maxConquerDays; cycle++) { // this is the main cycle counting capture days
+			
+		    int [] nextMove1;
+		    
+		    for (int i = 0; i < N; i++) {
+			    for (int j = 0; j < M; j++) {
+				    controlSum = controlSum + playArea[i][j];
+			        System.out.print(playArea[i][j]+" ");
+			    
+			        if (controlSum == N * M) {
+			    	captureComplete = true; // all fields are == 1
+			    	break;
+			        }
+			    }
+			    System.out.println();
+			    if (captureComplete) // all fields are == 1
+		    	    break;
+		    }
+		    // first conquest complete, moving to next steps
+		    
+		    nextMove1 = advance(dropRow, dropColumn, N, M);
+		    for (int a = 0; a < nextMove1.length; a += 2) {  //cycling through nextMove1 array, assigning 1s to fields
+		        playArea[nextMove1[a]][nextMove1[a + 1]] = 1;	
+		    }
+		    
+		    if (captureComplete) // all fields are == 1
+		    	break;
+		}
+			
+		System.out.println("control sum is " + controlSum);
+		return conquerDays;  
+	}
 	
-}
+	public static int[] advance (int row1, int column1, int N1, int M1) { //checking nearby fields and advancing
+		ArrayList<Integer> testList100 = new ArrayList<>();
+		if (row1 - 1 >= 0) {
+			testList100.add(row1 - 1);
+		    testList100.add(column1);
+		}
+		if (row1 + 1 < N1) {
+			testList100.add(row1 + 1);
+		    testList100.add(column1);
+		}
+		if (column1 - 1 >= 0) {
+			testList100.add(row1);
+		    testList100.add(column1 - 1);
+		}
+		if (column1 + 1 < M1) {
+			testList100.add(row1);
+		    testList100.add(column1 + 1);
+		}
+		int [] testArray100 = new int [testList100.size()];
+		for (int i = 0; i < testArray100.length; i++)
+			testArray100[i] = testList100.get(i);
+		
+		return testArray100;
+	}
+	
+	public static void main(String[] args) {
+		int N = 5;
+		int M = 5;
+		int dropRow = 2;
+		int dropColumn = 2;
+		int elementAt;
+		
+	
+		System.out.println(Arrays.toString(advance(1,1,4,4)));
+		
+		
+		
+		
+	}
 }
