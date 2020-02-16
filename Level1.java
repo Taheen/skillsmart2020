@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class level1 {
+public class Level1 {
 	
 	public static int ConquestCampaign(int N, int M, int L, int [] battalion) {
 		boolean captureComplete = false; // trigger of completion
@@ -82,4 +82,13 @@ public static int[] addX(int[] arr111, int[] arr222) {  //concatenation of 2 arr
 		return testArray200;
 		
 	}
+
+public static void main(String[] args) {
+   int test[] = {0,0,2,2};
+}
+
+
+
+
+
 }
