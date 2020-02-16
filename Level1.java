@@ -1,4 +1,3 @@
-package mylessons;
 import java.util.*;
 
 public class level1 {
