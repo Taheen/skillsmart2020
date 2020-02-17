@@ -1,3 +1,4 @@
+
 import java.util.*;
 
 public class Level1 {
@@ -82,13 +83,5 @@ public static int[] addX(int[] arr111, int[] arr222) {  //concatenation of 2 arr
 		return testArray200;
 		
 	}
-
-public static void main(String[] args) {
-   int test[] = {0,0,2,2};
-}
-
-
-
-
 
 }
