@@ -15,7 +15,7 @@ public class Level1 {
 		int [] nextMove1 = battalion; // next move array
 		int [] nextMove2;
 		int [] nextMoveTemp = new int [0];
-		for (int cycle = 1; cycle < M + N - 1; cycle++) {
+		for (int cycle = 1; cycle < M + N; cycle++) {
 			int controlSum = 0;
 		
 		    for (int adv = 0; adv < nextMove1.length; adv +=2) {
@@ -68,7 +68,7 @@ public class Level1 {
 		return testArray100;
 	}
 	
-public static int[] addX(int[] arr111, int[] arr222) {  //concatenation of 2 arrays without using <arraycopy>
+public static int[] addX(int[] arr111, int[] arr222)   {  //concatenation of 2 arrays without using <arraycopy>
 		
 		int [] testArray200 = new int [arr111.length + arr222.length];
 		int pos = 0;
