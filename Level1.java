@@ -4,7 +4,6 @@ import java.util.*;
 public class Level1 {
 	
 	public static int ConquestCampaign(int N, int M, int L, int [] battalion) {
-		boolean captureComplete = false; // trigger of completion
 	    int conquerDays = 0;
 	    int playArea[][] = new int [N][M]; //setting up matrix of given size
 		for (int i = 0; i < N; i++) { //filling playArea with 0
@@ -12,7 +11,10 @@ public class Level1 {
 				playArea[i][j] = 0;
 			}
 		}
-		int [] nextMove1 = battalion; // next move array
+		int [] nextMove1 = new int [battalion.length];
+		for (int i = 0; i < nextMove1.length; i++) {
+			  nextMove1[i] = (battalion[i] - 1);// next move array
+		}
 		int [] nextMove2;
 		int [] nextMoveTemp = new int [0];
 		for (int cycle = 1; cycle < M + N; cycle++) {
