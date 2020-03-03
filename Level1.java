@@ -1,89 +1,61 @@
-
 import java.util.*;
 
 public class Level1 {
 	
-	public static int ConquestCampaign(int N, int M, int L, int [] battalion) {
-	    int conquerDays = 0;
-	    int playArea[][] = new int [N][M]; //setting up matrix of given size
-		for (int i = 0; i < N; i++) { //filling playArea with 0
-			for (int j = 0; j < M; j++) {
-				playArea[i][j] = 0;
-			}
-		}
-		int [] nextMove1 = new int [battalion.length];
-		for (int i = 0; i < nextMove1.length; i++) {
-			  nextMove1[i] = (battalion[i] - 1);// next move array
-		}
-		int [] nextMove2;
-		int [] nextMoveTemp = new int [0];
-		for (int cycle = 1; cycle < M + N; cycle++) {
-			int controlSum = 0;
+public static String PatternUnlock(int N, int [] hits)  {
 		
-		    for (int adv = 0; adv < nextMove1.length; adv +=2) {
-	            if (playArea[nextMove1[adv]] [nextMove1[adv + 1]] != 1) { //checking if the field not already set to 1 
-	        	    playArea[nextMove1[adv]] [nextMove1[adv + 1]] = 1; // assigning 1 to the field
-	                nextMove2 = advance(nextMove1[adv], nextMove1[adv + 1], N, M);  //advancing to next field(s)
-	                nextMoveTemp = addX(nextMoveTemp, nextMove2);
-	            }
-		    }
-		    nextMove1 = nextMoveTemp;
-		    nextMoveTemp = new int [0];
-		    conquerDays++;
-		    
-		    for (int i = 0; i < N; i++) {
-		        for (int j = 0; j < M; j++) {
-			        controlSum = controlSum + playArea[i][j];
-		        
-	            }
-		    }
-		       
-		    if (controlSum == N * M) 
-		        break;
-		    
+		int [][] phoneScreen = { {6, 1, 9}, {5, 2, 8}, {4, 3, 7} };
+		//  6 1 9    dots on the phone screen
+		//  5 2 8
+		//  4 3 7
+		
+		double finalSum = 0;
+		int [] position = new int [2];
+		int currentValue;
+		position = indexOfIntArray(phoneScreen, hits[0]); //starting point
+		int rowPosition = position[0];
+		int colPosition = position[1];
+		int newRowPosition, newColPosition;
+		
+		for (int i = 1; i < N; i++) { // main cycle iterating through all dots in hitsTest array
+			currentValue = hits[i];
+			position = indexOfIntArray(phoneScreen, currentValue);
+			newRowPosition = position[0];
+			newColPosition = position[1];
+			if (newRowPosition == rowPosition || newColPosition == colPosition) {
+				finalSum = finalSum + 1; //if next dot move is vertical or horisontal
+			    }
+			else finalSum = finalSum + 1.41421; // if next dot move is diagonal
+			
+			rowPosition = newRowPosition;
+			colPosition = newColPosition;
 		}
-		return conquerDays;  
+		String strNew1 = String.format("%.05f", finalSum); //rounding up to 5 decimal digits
+		String strNew2 = strNew1.replace(".", ""); //removing dot
+		String FinalResult = strNew2.replace("0", ""); //removing zeros
+		
+	    return FinalResult;
 	}
 	
-	public static int[] advance (int row1, int column1, int N1, int M1) { //checking nearby fields and advancing
-		ArrayList<Integer> testList100 = new ArrayList<>();
-		if (row1 - 1 >= 0) {
-			testList100.add(row1 - 1);
-		    testList100.add(column1);
-		}
-		if (row1 + 1 < N1) {
-			testList100.add(row1 + 1);
-		    testList100.add(column1);
-		}
-		if (column1 - 1 >= 0) {
-			testList100.add(row1);
-		    testList100.add(column1 - 1);
-		}
-		if (column1 + 1 < M1) {
-			testList100.add(row1);
-		    testList100.add(column1 + 1);
-		}
-		int [] testArray100 = new int [testList100.size()];
-		for (int i = 0; i < testArray100.length; i++)
-			testArray100[i] = testList100.get(i);
-		
-		return testArray100;
-	}
-	
-public static int[] addX(int[] arr111, int[] arr222)   {  //concatenation of 2 arrays without using <arraycopy>
-		
-		int [] testArray200 = new int [arr111.length + arr222.length];
-		int pos = 0;
-		for (int element : arr111) {
-			testArray200[pos] = element;
-			pos++;
-		}
-		for (int element : arr222) {
-			testArray200[pos] = element;
-			pos++;
-		}
-		return testArray200;
-		
+	public static int [] indexOfIntArray(int[][] array, int key) {  // this is a replacement method for indexOf 
+		boolean breakControl = false;
+	    int returnvalue1 = -1;
+	    int returnvalue2 = -1;
+	    
+	    for (int i = 0; i < array.length; ++i) {
+	    	for (int j = 0; j < array[i].length; j++) {
+	            if (key == array[i][j]) {
+	                returnvalue1 = i;
+	                returnvalue2 = j;
+	                breakControl = true;
+	                break;
+	            }
+	    	}
+	    	if (breakControl)
+            	break;
+	    }
+	    int indexOf[] = {returnvalue1, returnvalue2};
+	    return indexOf;
 	}
 
 }
