@@ -30,7 +30,7 @@ public static String PatternUnlock(int N, int [] hits)  {
 			rowPosition = newRowPosition;
 			colPosition = newColPosition;
 		}
-		String strNew1 = String.format("%.05f", finalSum); //rounding up to 5 decimal digits
+		String strNew1 = String.format(Locale.ROOT,"%.05f", finalSum); //rounding up to 5 decimal digits
 		String strNew2 = strNew1.replace(".", ""); //removing dot
 		String FinalResult = strNew2.replace("0", ""); //removing zeros
 		
