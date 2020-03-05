@@ -32,7 +32,8 @@ public static String PatternUnlock(int N, int [] hits)  {
 		}
 		String strNew1 = String.format(Locale.ROOT,"%.05f", finalSum); //rounding up to 5 decimal digits
 		String strNew2 = strNew1.replace(".", ""); //removing dot
-		String FinalResult = strNew2.replace("0", ""); //removing zeros
+		String strNew3 = strNew2.replace(",", ""); //removing comma
+		String FinalResult = strNew3.replace("0", ""); //removing zeros
 		
 	    return FinalResult;
 	}
