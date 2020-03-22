@@ -7,7 +7,9 @@ public class Level15 {
 	public static int [] WordSearch(int len, String s, String subs) { 
 		int row = 0; 
 		int len1 = len;
-		int sLength = s.length();
+		int check1 = 0;
+		final int ss = s.length();
+		int sL = s.length();
 		char strBase [] = s.toCharArray();
 		String subS1 = "";
 		String tempStr = "";
@@ -15,79 +17,30 @@ public class Level15 {
 		int a1 = 0;
 		int a2 = 0;
 		int marker = 0;  // row with the matching word
-		boolean matchFound = false;
 		
-        for (int j = 0; j < sLength; j += len1) {
-			
 		
-		    for (int i = 0; i < len1; i++) {
+		String[] splitStr = s.split("\\s+");
+		System.out.println(splitStr.length);
+				
+		for (int k = 0; k < 12; k++) {
+			System.out.println(splitStr[k].toString() + " " + splitStr[k].length());
+			if (check1 + splitStr[k].length() <= len) {
+				tempStr = tempStr + splitStr[k] + " ";
+				check1 = check1 + splitStr[k].length();
+				System.out.println("check1 = " + check1);
+				System.out.println("tempStr = " + tempStr);
+			}
 			
-	    		if (strBase[i] == ' ' && i < (len1 - 1)) { // if space in a row, but not at the end
-		    	    a2 = i;
-			        subS1 = s.substring(a1, a2);
-			        System.out.println(a1 + " " + a2 + " " + subS1);
-			        if (subS1.equals(subs)) {
-			        	System.out.println("match in row " + row);
-			    	    matchFound = true;
-			    	    marker = row;
-			        }
-			        a1 = a2 + 1;
-			        System.out.println("a1 is now = " + a1);
-			        tempStr = tempStr + subS1 + " ";
-			    }  
-			
-			    if (strBase[i] == ' ' && i == (len1 - 1)) {  // if space is at the end of the row
-				    a2 = i;
-			        subS1 = s.substring(a1, a2);
-			        System.out.println(a1 + " " + a2 + " " + subS1);
-			        if (subS1.equals(subs)) {
-			        	System.out.println("match in row " + row);
-			    	    matchFound = true;
-			    	    marker = row;
-			        }
-			        row++;
-			        a1 = 0;
-			        finalStr = tempStr + subS1 + "\n";
-			    
-			        if (s.charAt(0) == ' ') {
-			        	s = s.substring(len1 + 1);
-			        }
-			        else {
-			    	    s = s.substring(len1 + 1);
-			        }
-			    	
-			        System.out.println("now working with: " + s);
-			    }
-			    
-			
-			    if (strBase[i] != ' ' && i == (len1 - 1)) { // if no spaces in a row
-				    subS1 = s.substring(a1, len1);
-			        System.out.println(a1 + " " + len1 + " " + subS1);
-			        if (subS1.equals(subs)) {
-			    	    System.out.println("match in row " + row);
-			    	    matchFound = true;
-			    	    marker = row;
-			    	
-			        }
-			        row++;
-			        a1 = 0;
-			        finalStr = tempStr + subS1 + "\n";
-			        if (s.charAt(0) == ' ') {
-			    	    s = s.substring(len1 + 1);
-			        }
-			        else {
-			    	    s = s.substring(len1 + 1);
-			        }
-			    	
-			        System.out.println("now working with: " + s);
-			    }
-			
-		    }
-			
+			else if (check1 + splitStr[k].length() > len) {
+				
+				check1 = 0;
+				row++;
+				System.out.println("moving to row " + row);
+			}
 		}
 		
 		
-		System.out.println(finalStr);
+		
 		int [] testArr = {0,0,1,0};
 	    return testArr;
 	}
