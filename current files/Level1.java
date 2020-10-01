@@ -62,6 +62,10 @@ public class Level1 {
                 }
             }
         }
+        if (inputStr.contains(" ") == false){
+            finalString = inputStr;
+        }
+
         return finalString;
     }
 
@@ -139,4 +143,5 @@ public class Level1 {
         }
         return finalArray;
     }
+
 }
