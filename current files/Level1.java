@@ -148,12 +148,4 @@ public class Level1 {
         return finalArray;
     }
 
-    public static void main(String[] args) {
-        int l1 = 3;
-        String s1 = "12345";
-        String target = "123";
-        System.out.println(Arrays.toString(WordSearch(l1, s1, target)));
-
-
-    }
 }
