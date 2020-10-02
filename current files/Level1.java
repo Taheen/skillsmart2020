@@ -38,6 +38,14 @@ public class Level1 {
         String tempString1 = "";
         int offset = 0;
 
+        if (inputStr.contains(" ") == false && inputStr.length() <= len1){
+            finalString = inputStr;
+        }
+
+        if (inputStr.contains(" ") == false && inputStr.length() > len1){
+            finalString = splitStringByLength(inputStr, len1);
+        }
+
         for(int i = 0; i < inputStr.length(); i++){
 
             if(Character.isWhitespace(inputStr.charAt(i))){
@@ -62,10 +70,6 @@ public class Level1 {
                 }
             }
         }
-        if (inputStr.contains(" ") == false){
-            finalString = inputStr;
-        }
-
         return finalString;
     }
 
@@ -144,4 +148,12 @@ public class Level1 {
         return finalArray;
     }
 
+    public static void main(String[] args) {
+        int l1 = 3;
+        String s1 = "12345";
+        String target = "123";
+        System.out.println(Arrays.toString(WordSearch(l1, s1, target)));
+
+
+    }
 }
