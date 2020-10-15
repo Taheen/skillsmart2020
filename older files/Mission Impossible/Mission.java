@@ -1,6 +1,8 @@
 import java.util.*;
 
-public class Level1 {
+public class Mission {
+
+    //main method
     public static String TheRabbitsFoot(String S, boolean encode){
         if (encode == true) {
             int rows = (matrixSize(removeSpaces(S))[0]);
@@ -73,4 +75,5 @@ public class Level1 {
         int [] resultArray = {lowerSqrt, higherSqrt};
         return resultArray;
     }
+
 }
