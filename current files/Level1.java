@@ -1,76 +1,40 @@
 import java.util.*;
 
 public class Level1 {
-    public static String TheRabbitsFoot(String S, boolean encode){
-        if (encode == true) {
-            int rows = (matrixSize(removeSpaces(S))[0]);
-            int cols = (matrixSize(removeSpaces(S))[1]);
-            char[][] ch = new char[rows][cols];
-            String S1 = removeSpaces(S); //spaces removed
-            int count = 0;
-            //filling up charArray
-            for (int i = 0; i < rows; i++) {
-                for (int j = 0; j < cols; j++) {
-                    ch[i][j] = S1.charAt(count);
-                    count++;
-                    if (count == S1.length()) {
-                        break;
-                    }
-                }
+    static int PrintingCosts(String Line){
+        int finalResult = 0;
+        boolean matchFound = false;
+        int [] ink = new int[] {24,7,22,23,10,26,18,23,19,10,25,21,18,17,19,
+                9,3,7,23,26,15,26,21,31,26,18,17,15,20,17,18,
+                6,12,4,21,8,32,20,16,28,18,7,25,20,25,13,12,
+                24,12,10,27,11,24,25,28,25,14,8,23,21,25,19,18,
+                29,17,22,26,10,29,25,25,16,22,3,18,16,13,13,9,
+                22,13,19,16,14,20,18,26,23,18,23,30,22,21,24};
+
+        char [] text = new char[] {'&',',','2','8','>','D','J','P','V','\\','b','h','n','t','z',
+                '!','\'','-','3','9','?','E','K','Q','W',']','c','i','o','u','{',
+                '\"','(','.','4',':','@','F','L','R','X','^','d','j','p','v','|',
+                '#',')','/','5',';','A','G','M', 'S','Y','_','e','k','q','w','}',
+                '$','*','0','6','<','B','H','N','T','Z','`','f','l','r','x','~',
+                '%','+','1','7','=','C','I','O','U','[','a','g','m','s','y'};
+
+        for (int i = 0; i < Line.length(); i++){
+
+            if (Line.charAt(i) == ' '){
+                continue;
             }
-            StringBuilder str = new StringBuilder();
-            for (int s1 = 0; s1 < rows; s1++) {
-                for (int s2 = 0; s2 < rows; s2++) {
-                    str.append(ch[s2][s1]);
-                }
-                str.append(" ");
-            }
-            String someString1 = str.toString();
-            return someString1.trim();
-        }
-
-        else {
-            int counter2 = 0;
-            int counter2limit = removeSpaces(S).length();
-
-            StringBuilder str2 = new StringBuilder();
-            String[] splitStr = S.split("\\s+");
-
-            char [][] ch2 = new char[splitStr[0].length()][splitStr[0].length()];
-            for (int i = 0; i < splitStr[0].length(); i++){
-                for(int j = 0; j < splitStr[0].length(); j++){
-                    str2.append(splitStr[j].charAt(i));
-                    counter2++;
-                    if (counter2 == counter2limit){
-                        break;
-                    }
-                }
-                if (counter2 == counter2limit){
+            for (int j = 0; j < text.length; j++){
+                if (Line.charAt(i) == text[j]){
+                    finalResult = finalResult + ink[j];
+                    matchFound = true;
                     break;
                 }
             }
-            String someString2 = str2.toString();
-            return someString2.trim();
+            if (matchFound == false){
+                finalResult = finalResult + 32;
+            }
         }
 
-    }
-
-    //removing spaces in given string
-    public static String removeSpaces(String inputStr){
-        String resultString = inputStr.replaceAll("\\s+","");
-        return resultString;
-    }
-
-    //calculating the size of final array
-    public static int[] matrixSize(String inputStr){
-        int strLen = inputStr.length();
-        double strLenSqrt = Math.sqrt(strLen);
-        int lowerSqrt = (int) strLenSqrt;
-        int higherSqrt = lowerSqrt + 1;
-        if ((lowerSqrt * higherSqrt) < strLen){
-            lowerSqrt++;
-        }
-        int [] resultArray = {lowerSqrt, higherSqrt};
-        return resultArray;
+        return finalResult;
     }
 }
