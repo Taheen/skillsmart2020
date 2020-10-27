@@ -1,6 +1,4 @@
-import java.util.*;
-
-public class Level1 {
+public class Election146 {
 
     public static String MassVote(int N, int [] Votes){
         float totalVotes = 0;
@@ -33,4 +31,5 @@ public class Level1 {
             return finalResult;
         }
     }
+
 }
