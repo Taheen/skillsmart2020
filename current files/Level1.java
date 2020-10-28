@@ -6,6 +6,7 @@ public class Level1 {
         float totalVotes = 0;
         int mostVote = Votes[0];
         int candidate = 0;
+        int equal = 0;
         int j = 0;
         float percentage = 0;
 
@@ -14,14 +15,19 @@ public class Level1 {
         }
 
         for (j = 1; j < Votes.length; j++){
-            if (Votes[j] > mostVote){
+            if (Votes[j] > mostVote && Votes[j] > equal){
                 mostVote = Votes[j];
                 candidate = j;
             }
+
             else if (Votes[j] == mostVote){
-                return "no winner";
+                equal = mostVote;
             }
         }
+        if (equal == mostVote){
+            return "no winner";
+        }
+
         percentage = (totalVotes/Votes[candidate]);
 
         if (percentage >= 2) {
@@ -33,4 +39,5 @@ public class Level1 {
             return finalResult;
         }
     }
+
 }
