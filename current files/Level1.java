@@ -2,42 +2,26 @@ import java.util.*;
 
 public class Level1 {
 
-    public static String MassVote(int N, int [] Votes){
-        float totalVotes = 0;
-        int mostVote = Votes[0];
-        int candidate = 0;
-        int equal = 0;
-        int j = 0;
-        float percentage = 0;
+    public static int [] UFO (int N, int [] data, boolean octal){
 
-        for (int i = 0; i < Votes.length; i++){
-            totalVotes = totalVotes + Votes[i];
+        int [] finalResult = new int [data.length];
+        String [] str1 = new String[data.length];
+        int decimal8;
+        int decimal16;
+        for (int i = 0; i < data.length; i++){
+            str1[i] = String.valueOf(data[i]);
         }
-
-        for (j = 1; j < Votes.length; j++){
-            if (Votes[j] > mostVote && Votes[j] > equal){
-                mostVote = Votes[j];
-                candidate = j;
+        for (int j = 0; j < str1.length; j++){
+            if (octal){
+                decimal8 = Integer.parseInt(str1[j], 8);
+                finalResult[j] = decimal8;
             }
-
-            else if (Votes[j] == mostVote){
-                equal = mostVote;
+            else {
+                decimal16 = Integer.parseInt(str1[j], 16);
+                finalResult[j] = decimal16;
             }
         }
-        if (equal == mostVote){
-            return "no winner";
-        }
-
-        percentage = (totalVotes/Votes[candidate]);
-
-        if (percentage >= 2) {
-            String finalResult = "minority winner " + (candidate + 1);
-            return finalResult;
-        }
-        else {
-            String finalResult = "majority winner " + (candidate + 1);
-            return finalResult;
-        }
+        return finalResult;
     }
 
 }
