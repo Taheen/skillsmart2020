@@ -1,7 +1,4 @@
-import java.util.*;
-
-public class Level1 {
-
+public class Yandexauto {
     public static int Unmanned(int L, int N, int [][] track){
 
         int initialTime = L;
@@ -32,5 +29,16 @@ public class Level1 {
             }
         }
         return totalTime;
+    }
+
+    public static void main(String[] args) {
+        int initialTime = 10;
+        int N = 2;
+        int [][] lights = {{3, 5, 5}, {5, 2, 2}};
+
+
+
+        System.out.println(Unmanned(initialTime, N, lights));
+
     }
 }
