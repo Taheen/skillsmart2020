@@ -14,7 +14,7 @@ public class Level1 {
         for (int i = 1; i <= initialTime; i++){
             totalTime++;
 
-            if (light < (N - 1) && track[light][0] == i) {  //reached traffic light
+            if (light < N  && track[light][0] == i) {  //reached traffic light
                 stop = i;
                 red = track[light][1];
                 green = track[light][2];
@@ -27,7 +27,7 @@ public class Level1 {
                 }
                 else { //red light
                     light++;
-                    totalTime = totalTime + (green - stop); // adding stoppage time
+                    totalTime = totalTime + (red - stop); // adding stoppage time
                 }
             }
         }
