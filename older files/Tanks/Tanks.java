@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Level1 {
+public class Tanks {
 
     //find substring match(es) in string, assuming there's at least 1 match (using .contains)
     public static int[] findElementIndex(String inputArr, String element) {
@@ -10,17 +10,18 @@ public class Level1 {
         StringBuilder sb1 = new StringBuilder(inputArr);
 
         for (int j = 0; j < sb1.length(); j++) {
-            if (sb1.indexOf(element) == sb1.lastIndexOf(element)) {
+            if (sb1.indexOf(element) == sb1.lastIndexOf(element)){
                 myNumbers.add(sb1.indexOf(element) + offset);
                 break;
-            } else {
+            }
+            else {
                 myNumbers.add(sb1.indexOf(element) + offset);
                 offset = offset + sb1.indexOf(element) + element.length();
                 sb1.delete(0, sb1.indexOf(element) + element.length());
             }
         }
 
-        int[] result = new int[myNumbers.size()];
+        int [] result = new int[myNumbers.size()];
         for (int k = 0; k < result.length; k++) {
             result[k] = myNumbers.get(k);
         }
@@ -80,5 +81,18 @@ public class Level1 {
 
         }
         return found;
+    }
+
+
+
+
+    public static void main(String[] args) {
+
+        String Str1 = "029402 560202 029694 780288";
+        String Str2 = "02 94";
+
+        System.out.println(TankRush(4, 6, Str1, 2, 2, Str2));
+
+
     }
 }
