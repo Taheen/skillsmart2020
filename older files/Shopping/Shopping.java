@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Level1 {
+public class Shopping {
 
     static int MaximumDiscount(int N, int [] price) {
         int discount = 0 ;
@@ -26,4 +26,15 @@ public class Level1 {
         return discount;
     }
 
+    public static void main(String[] args) {
+
+        int [] prices = new int[] {40, 40, 100, 100, 111, 111, 50, 60, 70, 20, 20, 20, 10};
+        int L = prices.length;
+
+
+        System.out.println(MaximumDiscount(L, prices));
+
+
+
+    }
 }
