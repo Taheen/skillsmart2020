@@ -15,11 +15,11 @@ public class Level1 {
 
         // if no dots present
         if (!(line.contains("."))){
-            match = true;
+            return true;
         }
         // if string is "*.*"
         if (line.equals("*.*")){
-            match = true;
+            return true;
         }
 
         for (int i = 0; i < sb1.length(); i++){
