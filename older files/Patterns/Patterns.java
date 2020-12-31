@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Level1 {
+public class Patterns {
 
     static boolean LineAnalysis(String line) {
         int firstDot = 0;
@@ -44,4 +44,10 @@ public class Level1 {
         return match;
     }
 
+
+    public static void main(String[] args) {
+        String test1 = "**..**..**..*";
+
+         System.out.println(LineAnalysis(test1));
+    }
 }
