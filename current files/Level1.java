@@ -2,7 +2,6 @@ import java.util.*;
 
 public class Level1 {
 
-<<<<<<< HEAD
     static boolean MisterRobot(int N, int [] data){
 
         int offset = N - 1;
@@ -22,26 +21,6 @@ public class Level1 {
                 break;
             }
             N--;
-=======
-    static boolean LineAnalysis(String line) {
-        int firstDot = 0;
-        int marker = 0;
-        boolean match = true;
-        firstDot = line.indexOf(".");
-        marker = line.indexOf("*", firstDot);
-        String pattern = line.substring(0, marker);
-        StringBuilder sb1 = new StringBuilder(line);
-        sb1.delete(0, marker);
-        System.out.println("pattern: " + pattern);
-
-        // if no dots present
-        if (!(line.contains("."))){
-            return true;
-        }
-        // if string is "*.*"
-        if (line.equals("*.*")){
-            return true;
->>>>>>> 32a9c3d67f330ec94d75cb692deb28fbe87f011b
         }
 
         //loop through remaining elements of testN, descending
