@@ -1,7 +1,6 @@
 import java.util.*;
 
-public class Level1 {
-
+public class MrRobot {
     static boolean MisterRobot(int N, int [] data){
 
         int offset = N - 1;
@@ -52,4 +51,14 @@ public class Level1 {
         return canBeSorted;
     }
 
+    public static void main(String[] args) {
+        int n = 7;
+        int [] testN = new int[]{2,3,5,4,6,7,1};
+
+
+        System.out.println(MisterRobot(6, testN));
+
+
+
+    }
 }
