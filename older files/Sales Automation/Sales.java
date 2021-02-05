@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Level1 {
+public class Sales {
 
     static String [] ShopOLAP(int N, String [] items){
         String [] duplicatesRemoved = removeDuplicates(items);
@@ -47,7 +47,7 @@ public class Level1 {
                 length--;
                 //replacing current item with same name + total sales
                 list2.set(j, itemName(list2.get(j)) + " " + sum);
-            }
+                }
 
             if (duplicates.size() > 1) {
                 int dupSize = duplicates.size();
@@ -113,4 +113,18 @@ public class Level1 {
         return sortedStringArr;
     }
 
+
+
+    public static void main(String[] args) {
+        String[] test = {"bag32 22", "bag33 22"};
+        int n = 8;
+
+        String[] ttt = (ShopOLAP(n, test));
+        System.out.println(Arrays.toString(ttt));
+
+
+
+
+
+    }
 }
