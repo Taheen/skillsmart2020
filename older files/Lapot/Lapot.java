@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Level1 {
+public class Lapot {
 
     public static int undoMarker = 0;
     public static boolean undoReset = false;
@@ -28,13 +28,13 @@ public class Level1 {
             String test = subString1(command);
             for (char t : test.toCharArray()) {
                 if (!Character.isDigit(t)) {
-                    return finalString.toString();
+                return finalString.toString();
                 }
             }
         }
         //commands 4-5 are longer than 1 symbol
-         if ((c == '4' || c == '5') && command.length() > 1)
-            return finalString.toString();
+       // if ((c == '4' || c == '5') && command.length() > 1)
+        //    return finalString.toString();
 
 
         // Command 3 - returning Char at index (as string)
