@@ -43,8 +43,10 @@ public class Level1 {
             StringBuilder someString = new StringBuilder();
             if (displayIndex <= finalString.length()) {
                 someString.append(finalString.charAt(displayIndex));
+                return someString.toString();
             }
-            return someString.toString();
+            return "";
+
         }
 
         // adding command to commandList
