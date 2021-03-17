@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Level1 {
+public class Sherlock {
 
     public static boolean SherlockValidString(String s){
 
@@ -53,5 +53,13 @@ public class Level1 {
         return result1;
     }
 
+    public static void main(String[] args) {
 
+
+        String test = "xxyyzabc";
+        System.out.println(SherlockValidString(test));
+
+
+
+    }
 }
