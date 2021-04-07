@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Level1 {
 
-    boolean TransformTransform(int A[], int N) {
+    public static boolean TransformTransform(int A[], int N) {
             int checkSum = 0;
             ArrayList<Integer> list1 = new ArrayList<>();
             ArrayList<Integer> list3;
@@ -15,6 +15,7 @@ public class Level1 {
             for (int c = 0; c < list3.size(); c++){
                 checkSum = checkSum + list3.get(c);
             }
+            System.out.println(checkSum);
             if (checkSum % 2 == 0) {
                 return true;
             }
@@ -29,10 +30,7 @@ public class Level1 {
         for (int i = 0; i <= inputList.size() - 1; i++){
             for (int j = 0; j <= inputList.size() - i - 1; j++){
                 k = i + j;
-                if (k - j == 0) {
-                    transformedList.add(inputList.get(0));
-                }
-                else {
+
                     max = inputList.get(j);
                     for (int a = j; a <= k; a++){
                         if(inputList.get(a) > max) max = inputList.get(a);
@@ -41,7 +39,7 @@ public class Level1 {
                 }
             }
 
-        }
+
         return transformedList;
     }
 
