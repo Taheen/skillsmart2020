@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Level1 {
 
-    boolean TransformTransform(int A[], int N) {
+    public static boolean TransformTransform(int A[], int N) {
             int checkSum = 0;
             ArrayList<Integer> list1 = new ArrayList<>();
             ArrayList<Integer> list3;
