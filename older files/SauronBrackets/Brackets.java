@@ -1,6 +1,9 @@
+import java.util.ArrayList;
 import java.util.*;
+import java.util.List;
 
-public class Level1 {
+public class Brackets {
+
 
     public static String BalancedParentheses(int N){
 
@@ -48,7 +51,8 @@ public class Level1 {
                         brackets.add(gap);
                     }
                 }
-                
+
+
                 bracketsClone = (LinkedList<Integer>) brackets.clone();
                 testList3 = listPermutations(bracketsClone);
                 testList4 = (removeDuplicates(testList3));
@@ -56,6 +60,9 @@ public class Level1 {
                 for (int i = 0; i < testList4.size(); i++){
                     finalList.add(testList4.get(i));
                 }
+
+
+
 
                 while (brackets.get(1) > 1) {
 
@@ -65,8 +72,9 @@ public class Level1 {
 
                             LinkedList<Integer> tempList2 = reduceCascade(brackets, r, x);
 
+
                             brackets.clear();
-                            brackets = (LinkedList<Integer>) tempList2.clone();
+                             brackets = (LinkedList<Integer>) tempList2.clone();
 
                             bracketsClone = (LinkedList<Integer>) brackets.clone();
                             testList3 = listPermutations(bracketsClone);
@@ -75,6 +83,8 @@ public class Level1 {
                             for (int i = 0; i < testList4.size(); i++){
                                 finalList.add(testList4.get(i));
                             }
+
+
                             break;
                         }
 
@@ -89,10 +99,14 @@ public class Level1 {
                             for (int i = 0; i < testList4.size(); i++){
                                 finalList.add(testList4.get(i));
                             }
+
+
                             break;
                         }
                     }
+
                 }
+
             }
 
             y--;
@@ -122,7 +136,7 @@ public class Level1 {
         return inputList;
     }
 
-    // generating permutations (of an integer list) and eliminating duplicates
+    // generating permutations and eliminating duplicates
     public static LinkedList<LinkedList<Integer>> listPermutations(LinkedList<Integer> list) {
 
         if (list.size() == 0) {
@@ -156,7 +170,7 @@ public class Level1 {
         }
         return outputList;
     }
-    //reducing list in "cascade", so 4,3,1 -> 4,2,2...
+
     public static LinkedList<Integer> reduceCascade(LinkedList<Integer> inputList, int index, int x){
         LinkedList<Integer> tempList = new LinkedList<>();
         for (int i = 0; i <= index; i++){
@@ -184,7 +198,7 @@ public class Level1 {
         }
         return tempList;
     }
-    // generating brackets from List<Integer>
+
     public static String bracketGenerator(LinkedList<LinkedList<Integer>> inputList){
         StringBuilder outputArr = new StringBuilder();
 
@@ -199,10 +213,12 @@ public class Level1 {
             outputArr.append(" ");
         }
 
+
         String finalString = outputArr.toString();
         return finalString;
+
     }
-    //printing brackets from integers
+
     public static String bracketPrinter (int b){
         StringBuilder printer = new StringBuilder();
 
@@ -215,5 +231,13 @@ public class Level1 {
 
         String output = printer.toString();
         return output;
+    }
+
+    public static void main(String[] args) {
+
+       System.out.println(BalancedParentheses(5));
+
+
+
     }
 }
